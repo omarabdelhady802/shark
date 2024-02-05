@@ -10,6 +10,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SESSION_TYPE'] = 'filesystem'
 login_manager = LoginManager(app)
 
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Models
 class Cars(db.Model):
