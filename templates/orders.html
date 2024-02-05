@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}اوردرات{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">الاوردرات</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>التاريخ</th>
+                <th>من</th>
+                <th>الي</th>
+                <th>نوع الرحله</th>
+                <th>اسم الشركه</th>
+                <th>اسم السائق</th>
+                <th>اسم المستخدم</th>
+                <th>اسم العميل</th>
+                <th>نوع السياره</th>
+                <th>اسم الكارته</th>
+                <th>طريقه الدفع</th>
+                <th>اجمالي المبلغ</th>
+                {% if current_user.role == "مسئول" %}
+                <th>سعر السياره</th>
+                <th>فرق اجمالي وسياره</th>
+                <th>سعر الكارته</th>
+                <th>البنزين</th>
+                <th>قبض السائق</th>
+                <th>صافي</th>
+                {% endif %}
+                <th>ملاحظات</th>
+                <th>تعديل</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in orders %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.pickup_time }}</td>
+                    <td>{{ car.fromm }}</td>
+                    <td>{{ car.to }}</td>
+                    <td>{{ car.typee }}</td>
+                    <td>{{ car.company_name }}</td>
+                    <td>{{ car.driver_name }}</td>
+                    <td>{{ car.user_name }}</td>
+                    <td>{{ car.customer_name }}</td>
+                    <td>{{ car.car_name }}</td>
+                    <td>{{ car.office_name }}</td>
+                    <td>{{ car.payment }}</td>
+                    <td>{{ car.total}}</td>
+                    {% if current_user.role == "مسئول" %}
+                    <td>{{ car.car }}</td>
+                    <td>{{ car.sub }}</td>
+                    <td>{{ car.office }}</td>
+                    <td>{{ car.fuel }}</td>
+                    <td>{{ car.driver }}</td>
+                    <td>{{ car.final }}</td>
+                    {% endif %}
+                    <td>{{ car.note }}</td>
+                    <td><a href="{{ url_for('edit_order', order_id=car.id) }}">تعديل</a> | <a href="{{ url_for('delete_order', order_id=car.id) }}" onclick="return confirm('Are you sure you want to delete this car?')">حذف</a></td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('new_order') }}">اضافه اوردر</a>
+{% endblock %}

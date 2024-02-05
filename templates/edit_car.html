@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">تعديل سياره</h1>
+    <form method="post" action="{{ url_for('edit_car', car_id=car.id) }}">
+        <div class="form-group">
+            <label for="name">نوع السياره:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ car.name }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">حفظ</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}فواتير{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">فواتير</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>اسم الشركه</th>
+                <th>دفع</th>
+                <th>استلام</th>
+                <th>مجموع</th>
+                <th>التاريخ</th>
+                <th>تعديل</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in fatoras %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.company_name }}</td>
+                    <td>{{ car.credit }}</td>
+                    <td>{{ car.depit }}</td>
+                    <td>{{ car.final }}</td>
+                    <td>{{ car.pickup_time }}</td>
+                    <td> <a href="{{ url_for('delete_fatora', fatora_id=car.id) }}" onclick="return confirm('Are you sure you want to delete this car?')">حذف</a></td>
+
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('new_fatora') }}">تسجيل فاتوره</a>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">تعديل اوردر</h1>
+    <form method="post" action="{{ url_for('edit_order', order_id=car.id) }}">
+        <div class="form-group">
+            <label for="company_name">اسم الشركه:</label>
+            <input type="text" list = "company" class="form-control" id="company_name" name="company_name" value="{{ car.company_name }}" required>
+            <datalist id="company">
+                {% for name in company %}
+                <option value={{name.name}}>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="from">من:</label>
+            <input type="text" class="form-control" id="from" name="from" value="{{ car.fromm }}" required>
+        </div>
+        <div class="form-group">
+            <label for="to">الي:</label>
+            <input type="text" class="form-control" id="to" name="to" value="{{ car.to }}" required>
+        </div>
+        <div class="form-group">
+            <label for="type">نوع الرحله:</label>
+            <input type="text" class="form-control" id="type" name="type" value="{{ car.typee }}" required>
+        </div>
+        <div class="form-group">
+            <label for="driver_name">اسم السائق:</label>
+            <input type="text" list = "driver" class="form-control" id="driver_name" name="driver_name"value="{{ car.driver_name }}" required>
+            <datalist id="driver">
+                {% for name in driver %}
+                <option value={{name.name}}>
+                {% endfor %}
+            </datalist>
+        </div>
+        
+        <div class="form-group">
+            <label for="customer_name">اسم العميل:</label>
+            <input type="text" list = "customer" class="form-control" id="customer_name" name="customer_name"value="{{ car.customer_name }}" required>
+            <datalist id="customer">
+                {% for name in customer %}
+                <option value={{name.name}}>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="car_name">نوع السياره:</label>
+            <input type="text" list ="cars" class="form-control" id="car_name" name="car_name" value="{{ car.car_name }}" required>
+            <datalist id="cars">
+                {% for name in cars %}
+                <option value={{name.name}}>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="office_name">اسم الكارته:</label>
+            <input type="text" class="form-control" id="office_name" name="office_name"value="{{ car.office_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="payment">طريقه الدفع</label>
+            <input type="text" list ="pays" class="form-control" id="payment" value="{{ car.payment }}" name="payment" required>
+            <datalist id="pays">
+                <option value= "اجل">
+                <option value= "كاش">
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="total_mony">اجمالي المبلغ</label>
+            <input type="number" class="form-control" id="total_mony" name="total_mony"value="{{ car.total }}"  required>
+        </div>
+        <div class="form-group">
+            <label for="car_money">سعر السياره</label>
+            <input type="number" class="form-control" id="car_money" name="car_money" value="{{ car.car }}" required>
+        </div>
+        <div class="form-group">
+            <label for="office_money">ثمن الكارته</label>
+            <input type="number" class="form-control" id="office_money" name="office_money" value="{{ car.office }}" required>
+        </div>
+        <div class="form-group">
+            <label for="fuel">بنزين</label>
+            <input type="number" class="form-control" id="fuel" name="fuel" value="{{ car.fuel }}" required>
+        </div>
+        <div class="form-group">
+            <label for="driver_money">قبض السائق</label>
+            <input type="number" class="form-control" id="driver_money" name="driver_money" value="{{ car.driver }}" required>
+        </div>
+        <div class="form-group">
+            <label for="note">ملاحظات</label>
+            <input type="text" class="form-control" id="note" value="{{ car.note }}" name="note" required>
+        </div>
+        <div class="form-group">
+            <label for="date">التاريخ</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{ car.pickup_time }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">تعديل الاوردر</button>
+    </form>
+{% endblock %}

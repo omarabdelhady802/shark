@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}حجوزات{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">نتائج</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>الاسم</th>
+                <th>الرقم</th>
+                <th>من</th>
+                <th>الي</th>
+                <th>السعر</th>
+                <th>الوقت</th>
+                <th>التاريخ</th>
+                <th>الملاحظات</th>
+              
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in result %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.name }}</td>
+                    <td>{{ car.num }}</td>
+                    <td>{{ car.from_ }}</td>
+                    <td>{{ car.to }}</td>
+                    <td>{{ car.price }}</td>
+                    <td>{{ car.time }}</td>
+                    <td>{{ car.date }}</td>
+                    <td>{{ car.note }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

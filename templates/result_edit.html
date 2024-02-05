@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}تقرير صيانات{% endblock %}
+{%block h%}
+    <style>
+        /* Custom styling for the number display */
+        .styled-number {
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Custom styling for the number display when focused (not applicable for non-input elements) */
+        .styled-number:focus {
+            outline: none; /* Removes the default focus outline in some browsers */
+        }
+    </style>
+
+{%endblock%}
+
+
+{% block content %}
+    <h1 class="mt-4">التقرير</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>نوع السياره</th>
+                <th>نوع الصيانه</th>
+                <th>الشركه المنفذه</th>
+                <th>عدد الكيلوات</th>
+                <th>السعر</th>
+                <th>التاريخ</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in result %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.name }}</td>
+                    <td>{{ car.typee }}</td>
+                    <td>{{ car.company }}</td>
+                    <td>{{ car.killo }}</td>
+                    <td>{{ car.price }}</td>
+                    <td>{{ car.date }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <div class="container" style="padding-top: 70px;">
+        الاجمالي :
+        <div class="styled-number" id="styledNumber">{{f}}</div>
+    </div>
+
+  
+   
+{% endblock %}

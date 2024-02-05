@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}الصيانات{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">الصيانات</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>نوع السياره</th>
+                <th>نوع الصيانه</th>
+                <th>الشركه المنفذه</th>
+                <th>عدد الكيلوات</th>
+                <th>السعر</th>
+                <th>التاريخ</th>
+                <th>تعديل</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.name }}</td>
+                    <td>{{ car.typee }}</td>
+                    <td>{{ car.company }}</td>
+                    <td>{{ car.killo }}</td>
+                    <td>{{ car.price }}</td>
+                    <td>{{ car.date }}</td>
+                    <td><a href="{{ url_for('edit_edit', edit_id=car.id) }}">تعديل</a> | <a href="{{ url_for('delete_edit', edit_id=car.id) }}" onclick="return confirm('Are you sure you want to delete this car?')">حذف</a></td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('new_edit') }}">اضافه صيانه</a>
+    <a class="btn btn-primary" href="{{ url_for('edit_report') }}">تقارير</a>
+
+{% endblock %}

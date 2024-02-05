@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">اضافه صيانه</h1>
+    <form method="post" action="{{ url_for('new_edit') }}">
+        <div class="form-group">
+            <label for="name">نوع السياره:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="type"> نوع الصيانه:</label>
+            <input type="text" class="form-control" id="type" name="type" required>
+        </div>
+        <div class="form-group">
+            <label for="company">الشركه المنفذه</label>
+            <input type="text" class="form-control" id="company" name="company" required>
+        </div>
+        <div class="form-group">
+            <label for="price">السعر</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+        </div>
+        <div class="form-group">
+            <label for="killo">كيلوات العداد</label>
+            <input type="text" class="form-control" id="killo" name="killo" required>
+        </div>
+        <div class="form-group">
+            <label for="date">التارخ</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">اضافه</button>
+    </form>
+{% endblock %}

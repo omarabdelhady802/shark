@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}ملاحظات{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">الملاحظات</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>الملاحظه</th>
+                <th>التاريخ</th>
+                <th>تعديل</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in notes %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.name }}</td>
+                    <td>{{ car.date }}</td>
+                    <td> <a href="{{ url_for('delete_note', note_id=car.id) }}" onclick="return confirm('Are you sure you want to delete this car?')">حذف</a></td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('new_note') }}">اضافه ملاحظه</a>
+{% endblock %}

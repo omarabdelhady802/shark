@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}تقرير{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">تقارير</h1>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>التاريخ</th>
+                <th>من</th>
+                <th>الي</th>
+                <th>نوع الرحله</th>
+                <th>اسم الشركه</th>
+                <th>اسم السائق</th>
+                <th>اسم المستخدم</th>
+                <th>اسم العميل</th>
+                <th>نوع السياره</th>
+                <th>اسم الكارته</th>
+                <th>اجمالي المبلغ</th>
+                <th>سعر السياره</th>
+                <th>فرق اجمالي وسياره</th>
+                <th>سعر الكارته</th>
+                <th>البنزين</th>
+                <th>قبض السائق</th>
+                <th>صافي</th>
+                <th>ملاحظه</th>
+                
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in result %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.pickup_time }}</td>
+                    <td>{{ car.fromm }}</td>
+                    <td>{{ car.to }}</td>
+                    <td>{{ car.typee }}</td>
+                    <td>{{ car.company_name }}</td>
+                    <td>{{ car.driver_name }}</td>
+                    <td>{{ car.user_name }}</td>
+                    <td>{{ car.customer_name }}</td>
+                    <td>{{ car.car_name }}</td>
+                    <td>{{ car.office_name }}</td>
+                    <td>{{ car.total}}</td>
+                    <td>{{ car.car }}</td>
+                    <td>{{ car.sub }}</td>
+                    <td>{{ car.office }}</td>
+                    <td>{{ car.fuel }}</td>
+                    <td>{{ car.driver }}</td>
+                    <td>{{ car.final }}</td>
+                    <td>{{ car.note }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th>عدد الرحلات</th>
+                <th>اجمالي المبلغ</th>
+                <th>سعر السياره</th>
+                <th>فرق اجمالي وسياره</th>
+                <th>سعر الكارته</th>
+                <th>البنزين</th>
+                <th>قبض السائق</th>
+                <th>صافي</th>        
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ times}}</td>
+                    <td>{{ total}}</td>
+                    <td>{{ car }}</td>
+                    <td>{{ sub }}</td>
+                    <td>{{ office }}</td>
+                    <td>{{ fuel }}</td>
+                    <td>{{ driver }}</td>
+                    <td>{{ final }}</td>
+                    
+                </tr>
+          
+        </tbody>
+    </table>
+{% endblock %}

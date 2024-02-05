@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">تعديل غسيل</h1>
+    <form method="post" action="{{ url_for('edit_work',work_id=car.id) }}">
+        <div class="form-group">
+            <label for="name">نوع السياره:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ car.car_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="type"> نوع الغسيل:</label>
+            <input type="text" class="form-control" id="type" name="type" value="{{ car.typee }}" required>
+        </div>
+        <div class="form-group">
+            <label for="day">اليوم</label>
+            <input type="text" class="form-control" id="day" name="day" value="{{ car.day }}" required>
+        </div>
+        <div class="form-group">
+            <label for="price">السعر</label>
+            <input type="number" class="form-control" id="price" name="price"value="{{ car.price }}" required>
+        </div>
+        <div class="form-group">
+            <label for="date">التارخ</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{ car.date }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">تعديل</button>
+    </form>
+{% endblock %}

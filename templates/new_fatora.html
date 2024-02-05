@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">فاتوره جديده</h1>
+    <form method="post" action="{{ url_for('new_fatora') }}">
+        <div class="form-group">
+            <label for="name">اسم الشركه:</label>
+            <input type="text"  list = "company" class="form-control" id="name" name="name" required>
+            <datalist id="company">
+                {% for name in company %}
+                <option value={{name.name}}>
+                {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="rec">استلام</label>
+            <input type="number" class="form-control" id="rec" name="rec" required>
+        </div>
+        <div class="form-group">
+            <label for="pay">دفع</label>
+            <input type="number" class="form-control" id="pay" name="pay" required>
+        </div>
+        <div class="form-group">
+            <label for="date">التاريخ</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">اضافه</button>
+    </form>
+{% endblock %}

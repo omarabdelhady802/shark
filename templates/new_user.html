@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">اضافه مستخدم جديد</h1>
+    <form method="post" action="{{ url_for('new_user') }}">
+        <div class="form-group">
+            <label for="name">اسم المستخدم:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="password">كلمه المرور:</label>
+            <input type="text" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="role">الصلاحيه:</label>
+            <input type="text" class="form-control" id="role" list = "p" name="role" required>
+            <datalist id="p">
+                <option value= "مسئول">
+                <option value= "مستخدم">
+            </datalist>
+        </div>
+        <button type="submit" class="btn btn-primary">اضافه مستخدم</button>
+    </form>
+{% endblock %}

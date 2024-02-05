@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-4">اضافه اوردر جديد</h1>
+    <form method="post" action="{{ url_for('new_order') }}">
+        <div class="form-group">
+            <label for="company_name">اسم الشركه:</label>
+            <input type="text" class="form-control" list = "company" id="company_name" name="company_name" required>
+            <datalist id="company">
+                {% for name in company %}
+                <option value={{name.name}}>
+                    {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="from">من:</label>
+            <input type="text" class="form-control" id="from" name="from" required>
+        </div>
+        <div class="form-group">
+            <label for="to">الي:</label>
+            <input type="text" class="form-control" id="to" name="to" required>
+        </div>
+        <div class="form-group">
+            <label for="type">نوع الرحله:</label>
+            <input type="text" class="form-control" id="type" name="type" required>
+        </div>
+        <div class="form-group">
+            <label for="driver_name">اسم السائق:</label>
+            <input type="text" list = "driver" class="form-control" id="driver_name" name="driver_name" required>
+            <datalist id="driver">
+                {% for name in driver %}
+                <option value={{name.name}}>
+                    {% endfor %}
+            </datalist>
+        </div>
+        
+
+        <div class="form-group">
+            <label for="customer_name">اسم العميل:</label>
+            <input type="text" list = "customer" class="form-control" id="customer_name" name="customer_name" required>
+            <datalist id="customer">
+                {% for name in customer %}
+                <option value={{name.name}}>
+                    {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="car_name">نوع السياره:</label>
+            <input type="text" list = "car" class="form-control" id="car_name" name="car_name" required>
+            <datalist id="car">
+                {% for name in car %}
+                <option value={{name.name}}>
+                    {% endfor %}
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="office_name">اسم الكارته:</label>
+            <input type="text" class="form-control" id="office_name" name="office_name" required>
+        </div>
+        <div class="form-group">
+            <label for="payment">طريقه الدفع</label>
+            <input type="text" list ="pays" class="form-control" id="payment" name="payment" required>
+            <datalist id="pays">
+                <option value= "اجل">
+                <option value= "كاش">
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="total_mony">اجمالي المبلغ</label>
+            <input type="number" class="form-control" id="total_mony" name="total_mony" required>
+        </div>
+        <div class="form-group">
+            <label for="car_money">حساب السياره</label>
+            <input type="number" class="form-control" id="car_money" name="car_money" required>
+        </div>
+        <div class="form-group">
+            <label for="office_money">سعر الكارته</label>
+            <input type="number" class="form-control" id="office_money" name="office_money" required>
+        </div>
+        <div class="form-group">
+            <label for="fuel">البنزين</label>
+            <input type="number" class="form-control" id="fuel" name="fuel" required>
+        </div>
+        <div class="form-group">
+            <label for="driver_money">قبض السائق</label>
+            <input type="number" class="form-control" id="driver_money" name="driver_money" required>
+        </div>
+        <div class="form-group">
+            <label for="note">ملاحظات</label>
+            <input type="text" class="form-control" id="note" name="note" required>
+        </div>
+        <div class="form-group">
+            <label for="date">التاريخ</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">اضافه</button>
+    </form>
+{% endblock %}

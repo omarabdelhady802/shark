@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Limo Management System{% endblock %}</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css">
+    <style>
+        .alert-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .alert {
+            margin-bottom: 10px;
+            padding: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+
+        .alert-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+    {%block h%} {%endblock%}
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='images/لوجو.png') }}" alt="Company Logo" width="150" height="70">
+
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('cars') }}">سيارات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('drivers') }}">سائقين</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('books') }}">الحجز</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('customers') }}">عملاء</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('companies') }}">شركات</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('fatoras') }}">فواتير</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('orders') }}">اوردرات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('edits') }}">صيانات</a>
+                </li>
+                {% if current_user.role == "مسئول" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users') }}">مستخدمين</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('notes') }}">ملاحظات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('work') }}">المغسله</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('reports') }}">تقارير</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">تسجيل خروج</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">تسجيل دخول</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 70px">
+        <!-- Display flashed messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert-container">
+                    {% for message in messages %}
+                        <div class="alert alert-success">
+                                       
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.rtlcss.com/bootstrap/v4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
