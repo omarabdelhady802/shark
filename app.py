@@ -9,9 +9,9 @@ db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SESSION_TYPE'] = 'filesystem'
 login_manager = LoginManager(app)
-db.init_app(app)
+# db.init_app(app)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Models
 class Cars(db.Model):
@@ -837,6 +837,6 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #     db.create_all()
     app.run(debug=True)
