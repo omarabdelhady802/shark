@@ -9,6 +9,7 @@ db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SESSION_TYPE'] = 'filesystem'
 login_manager = LoginManager(app)
+db.init_app(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
